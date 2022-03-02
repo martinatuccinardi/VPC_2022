@@ -88,7 +88,7 @@ clean_data<- function(master){
 }
 
 
-table_soglie <- function(tree_table,soglie = c(0.02,0.04), var = 'pred_vpc'){
+table_soglie <- function(tree_table,soglie = c(0.03,0.04), var = 'pred_vpc'){
     lista_soglie <- list(paste(var,"<=",soglie[[1]]),
                          paste(var,"<=",soglie[[2]],"&",var,">",soglie[[1]]),
                          paste(var,">",soglie[[2]]))
@@ -159,10 +159,10 @@ crea_db_perimetro <- function(path){
     saveRDS(dt,file.path(path,'DB_perimetro.RDS'))
 }
 
-compute_model <- function(master,dt_orig,flag_ews,minbuck= 0.0005, cp = 1e-4, perc_split =0.75,suffix = '',desc =""){
+compute_model <- function(master,dt_orig,flag_ews,minbuck= 0.0005, cp = 1e-4, perc_split =0.75,suffix = '',desc ="", seed = 1704){
 
     #creo il modello utilizzando tutte le variabili
-    set.seed(1704)
+    set.seed(seed)
     rows <- sample(1:nrow(master), perc_split*nrow(master), replace=F)
     if(!flag_ews){
         train_set <- master[rows,setdiff(colnames(master),cols_ews),with = FALSE]
