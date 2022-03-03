@@ -207,7 +207,8 @@ compute_model <- function(master,dt_orig,flag_ews,minbuck= 0.0005, cp = 1e-4, pe
 
     saveXML(pmod2, file=file.path(path_name$path,paste0("tree_ews",flag_ews,suffix,"_",path_name$index,'.xml')))
 
-    line=paste(paste0("tree_ews",flag_ews,suffix,"_",path_name$index), " - ",as.character(Sys.time()), " - ", desc)
+    line=paste(paste0("tree_ews",flag_ews,suffix,"_",path_name$index), " - ",as.character(Sys.time()), "\nparametri: EWS =",flag_ews,
+        ", split =",perc_split,", cp =",cp,', minbuck = ', minbuck,'\n', desc,'\n')
     write(line,file=file.path(path_name$path,"file_versioning.txt"),append=TRUE)
     output<- list(modello,dt_appo_pred,summ,rows)
     names(output)<- c('model','pred','tree_table','rows')
