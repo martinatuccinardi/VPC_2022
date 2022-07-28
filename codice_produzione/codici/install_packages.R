@@ -1,0 +1,12 @@
+install.packages('openxlsx')
+install.packages('data.table')
+install.packages('rpart')
+install.packages('rpart.plot')
+install.packages('readxl')
+install.packages('stringr')
+install.packages('pmml')
+install.packages('partykit')
+install.packages('ROCR')
+install.packages('pracma')
+install.packages('ggplot2')
+
