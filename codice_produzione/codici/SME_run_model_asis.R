@@ -40,8 +40,6 @@ train <- master_modello[ ,..cols_modello][rows]
 test <- master_modello[ ,..cols_modello][-rows]
 
 
-
-
 pred_mod<- predict(modello,test)
 pred_mod<- as.data.table(pred_mod)
 # dt_appo_pred <- copy(test)

@@ -2,14 +2,17 @@ source('model_functions.R')
 
 path_test <-'../data/test'
 
+
 segmento = 'co'
-suffix = 'co_test'
 
 ### Lettura file di configurazione
 source(paste0('../config/',segmento,'_config_file_asis.R'))
+suffix = 'co_test'
+
+
 #
 ### LETTURA db test
-path_test <- file.path(path_test,segmento,nome_db_test)
+path_test <- file.path(path_test,segmento,paste0(nome_db_test,".csv"))
 test <- setDT(fread(path_test,stringsAsFactors = TRUE))
 test <- test[,..cols_modello]
 

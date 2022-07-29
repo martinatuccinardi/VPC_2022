@@ -7,9 +7,11 @@ suffix = 'sme_test'
 
 ### Lettura file di configurazione
 source(paste0('../config/',segmento,'_config_file_asis.R'))
-#
+
+## sovrascrivo il suffix
+suffix = 'sme_test'
 ### LETTURA db test
-path_test <- file.path(path_test,segmento,nome_db_test)
+path_test <- file.path(path_test,segmento,paste0(nome_db_test,".csv"))
 test <- setDT(fread(path_test,stringsAsFactors = TRUE))
 test[,DSI_tipo_pratica := as.factor(DSI_tipo_pratica) ]
 test <- test[,..cols_modello]
